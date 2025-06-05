@@ -29,7 +29,7 @@ function LoginPage() {
     setIsLoading(true);
     try {
       //validate
-      schemaLogin.validate(input, { abortEarly: false });
+      schemaLogin.validateSync(input, { abortEarly: false });
 
       //api
       const res = await authApi.login(input);
@@ -59,10 +59,11 @@ function LoginPage() {
   return (
     <div className="flex justify-center h-screen pb-40 items-center  ">
       <div>
-        <form className="flex flex-col bg-gray-600  justify-between border border-white rounded-2xl h-100 w-120 p-12">
-          <h1 onSubmit={handleSubmit} className="text-4xl font-bold">
-            Welcome
-          </h1>
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col bg-gray-600  justify-between border border-white rounded-2xl h-100 w-120 p-12"
+        >
+          <h1 className="text-4xl font-bold">Welcome</h1>
           <InputRegister
             className="bg-gray-700 text-grey-400 h-10 pl-2 rounded-md"
             name="username"
@@ -85,13 +86,13 @@ function LoginPage() {
           <div className="flex gap-2">
             <button
               onClick={() => navigate("/register")}
-              className="w-1/2 b bg-gray-700 h-10 rounded-md"
+              className="w-1/2 b bg-gray-700 h-10 rounded-md cursor-pointer"
             >
               Register
             </button>
             <button
               onClick={() => navigate("/todo")}
-              className="w-1/2 bg-gray-700 h-10 rounded-md"
+              className="w-1/2 bg-gray-700 h-10 rounded-md cursor-pointer"
             >
               Log in
             </button>
